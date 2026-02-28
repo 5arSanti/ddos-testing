@@ -1,0 +1,15 @@
+# Configuración de ngrok para exponer la API local
+# Uso: ngrok start api --config ~/.config/ngrok/ngrok.yml --config ngrok.yml
+#
+# Nota: En plan gratuito ngrok no permite añadir ngrok-skip-browser-warning
+# desde la config; solo en planes de pago. Si sigues viendo la página de inicio,
+# usa el header desde el cliente: curl -H "ngrok-skip-browser-warning: 1" <url>
+
+version: "2"
+tunnels:
+  api:
+    addr: 3000
+    proto: http
+    request_header:
+      add:
+        - "ngrok-skip-browser-warning: true"
